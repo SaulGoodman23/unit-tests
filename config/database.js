@@ -8,9 +8,10 @@ const databaseName="jobs_db"
 
 const connectDatabase = async () => {
   mongoose.set("strictQuery",true)
-  mongoose.connect("mongodb://127.0.0.1:27017/jobs_db").then((con) => {
-    console.log(`MongoDB Database connected with host: ${con.connection.host}`);
-  });
+  // mongoose.connect("mongodb://127.0.0.1:27017/jobs_db_test").then((con) => {
+  //   //console.log(`MongoDB Database connected with host: ${con.connection.host}`);
+  // });
+  mongoose.connect("mongodb://127.0.0.1:27017/jobs_db_test")
   // await client.connect();
   // console.log('Connected successfully to Database...');
   // client.db(databaseName)

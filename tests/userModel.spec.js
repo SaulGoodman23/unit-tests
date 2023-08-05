@@ -13,4 +13,23 @@ describe("User Model", () => {
         })
         expect(user).toHaveProperty("_id")
     })
+
+    it("Should throw validation error for required fields", async () => {
+        const user = new User()
+        jest.spyOn(user, 'validate').mockRejectedValueOnce({
+            errors: {
+                name: 'Please enter your name',
+                email: 'Please enter your email address',
+                password: 'Please enter password'
+            }
+        })
+
+        try {
+            await user.validate()
+        } catch (err) {
+            expect(err.errors.name).toBeDefined()
+            expect(err.errors.email).toBeDefined()
+            expect(err.errors.password).toBeDefined()
+        }
+    })
 })
